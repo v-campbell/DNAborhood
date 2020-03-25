@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // selected.innerHTML = "-";
 
     let clicks = 0;
-
+    let topGuess = game.board.hiddenTopStrand
+    let bottomGuess = game.board.hiddenBottomStrand
+    
     game.board.hiddenTopStrand.map((letter, i) => {
         let div = document.createElement("div");
         div.innerHTML = letter;
@@ -25,15 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 div.className += " selected"
                 clicks += 1
             } else {
-                debugger
+                // debugger
                 let selected = document.getElementsByClassName("selected").item(0);
                 selected.className = selected.className.replace(" selected", "")
                 let temp = div.innerHTML;
                 div.innerHTML = selected.innerHTML;
                 selected.innerHTML = temp;
                 clicks = 0;
+                topGuess[i] = div.innerHTML;
             }
         })
+        // letter = div.innerHTML;
         grid.appendChild(div);
     })
 
@@ -54,8 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 div.innerHTML = selected.innerHTML;
                 selected.innerHTML = temp;
                 clicks = 0;
+                bottomGuess[i] = div.innerHTML;
+
             }
         })
+        // letter = div.innerHTML;
         grid.appendChild(div);
     })
 
@@ -76,9 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
            
         })
+        possible = div.innerHTML;
         pool.appendChild(div)
     })
 
+    let submit = document.createElement("button");
+    submit.innerHTML = "Submit"
+    submit.addEventListener("click", () => {
+        game.receiveGuess([topGuess, bottomGuess]);
+    });
+    big.appendChild(submit)
 
-    
+
+    let guessesRemaining = document.createElement("div");
+    guessesRemaining.innerHTML = game.numGuesses;
+    big.appendChild(guessesRemaining);
 }) 
