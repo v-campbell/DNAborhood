@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const top = document.getElementById("top");
     const bottom = document.getElementById("bottom");
     const pool = document.getElementById("pool");
+
     root.innerHTML = "test";
     let game = new Game();
     game.runGame();
@@ -26,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     typeWriter();
-
     let guessesRemaining = document.getElementById("guesses");
     guessesRemaining.innerHTML = game.numGuesses + " guesses left";
+    // debugger
 
     let clicks = 0;
     let topGuess = game.board.hiddenTopStrand
@@ -39,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
         div.innerHTML = letter;
         div.className = "letters";
         div.id = "topletter" + i;
+        
         div.addEventListener("click", () => {
             if (clicks === 0) {
                 div.className += " selected"
                 clicks += 1
             } else {
-                // debugger
                 let selected = document.getElementsByClassName("selected").item(0);
                 selected.className = selected.className.replace(" selected", "")
 
@@ -63,14 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
     game.board.hiddenBottomStrand.map((letter, i) => {
         let div = document.createElement("div");
         div.innerHTML = letter;
-        div.className = "letters " + letter;
+        div.className = "letters";
         div.id = "bottomletter" + i;
         div.addEventListener("click", () => {
             if (clicks === 0) {
-                div.className += " selected"
-                clicks += 1
+                div.className += " selected";
+                clicks += 1;
             } else {
-                // debugger
                 let selected = document.getElementsByClassName("selected").item(0);
                 selected.className = selected.className.replace(" selected", "")
                 let temp = div.innerHTML;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }           
         })
         possible = div.innerHTML;
-        pool.appendChild(div)
+        pool.appendChild(div);
     })
 
     let submit = document.getElementById("submit")
