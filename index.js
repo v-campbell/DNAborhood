@@ -3,15 +3,32 @@ const Game = require('./lib/game');
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
     const big = document.getElementById("big");
-    const grid = document.getElementById("grid");
+    const top = document.getElementById("top");
+    const bottom = document.getElementById("bottom");
     const pool = document.getElementById("pool");
     root.innerHTML = "test";
     let game = new Game();
     game.runGame();
 
-    // big.innerHTML += game.board.strands;
-    // let selected = document.createElement("div");
-    // selected.innerHTML = "-";
+    let l = 0;
+    let txt = 'DrFranklins-MacBook-Pro: ~DNAluvr$ > Hello, my name is Dr Rosalind Franklin. > I need your help! > Guess the genome seqeunce by choosing the correct nucleotides. >';
+    let speed = 30; /* The speed/duration of the effect in milliseconds */
+
+    function typeWriter() {
+        if (l < txt.length) {
+            if ((txt.charAt(l + 1) === '>')) {
+                document.getElementById("intro").innerHTML += '<br />';
+            }
+            document.getElementById("intro").innerHTML += txt.charAt(l);
+            l++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
+
+    let guessesRemaining = document.getElementById("guesses");
+    guessesRemaining.innerHTML = game.numGuesses + " guesses left";
 
     let clicks = 0;
     let topGuess = game.board.hiddenTopStrand
@@ -20,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     game.board.hiddenTopStrand.map((letter, i) => {
         let div = document.createElement("div");
         div.innerHTML = letter;
-        div.className = "letters"
+        div.className = "letters";
         div.id = "topletter" + i;
         div.addEventListener("click", () => {
             if (clicks === 0) {
@@ -30,21 +47,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 // debugger
                 let selected = document.getElementsByClassName("selected").item(0);
                 selected.className = selected.className.replace(" selected", "")
+
                 let temp = div.innerHTML;
                 div.innerHTML = selected.innerHTML;
                 selected.innerHTML = temp;
+
                 clicks = 0;
                 topGuess[i] = div.innerHTML;
             }
         })
         // letter = div.innerHTML;
-        grid.appendChild(div);
+        top.appendChild(div);
     })
 
     game.board.hiddenBottomStrand.map((letter, i) => {
         let div = document.createElement("div");
         div.innerHTML = letter;
-        div.className = "letters"
+        div.className = "letters " + letter;
         div.id = "bottomletter" + i;
         div.addEventListener("click", () => {
             if (clicks === 0) {
@@ -63,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         // letter = div.innerHTML;
-        grid.appendChild(div);
+        bottom.appendChild(div);
     })
 
 
@@ -78,24 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 clicks += 1
             } else if (div.className.includes("possibles")){
                 let selected = document.getElementsByClassName("selected").item(0);
-                selected.className = selected.className.replace(" selected", "")
-                div.className += " selected"
-            }
-           
+                selected.className = selected.className.replace(" selected", "");
+                div.className += " selected";
+            }           
         })
         possible = div.innerHTML;
         pool.appendChild(div)
     })
 
-    let submit = document.createElement("button");
-    submit.innerHTML = "Submit"
+    let submit = document.getElementById("submit")
     submit.addEventListener("click", () => {
         game.receiveGuess([topGuess, bottomGuess]);
     });
-    big.appendChild(submit)
-
-
-    let guessesRemaining = document.createElement("div");
-    guessesRemaining.innerHTML = game.numGuesses;
-    big.appendChild(guessesRemaining);
 }) 
