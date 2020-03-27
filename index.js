@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     typeWriter();
+    
     let guessesRemaining = document.getElementById("guesses");
     guessesRemaining.innerHTML = game.numGuesses + " guesses left";
     // debugger
@@ -37,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     game.board.hiddenTopStrand.map((letter, i) => {
         let div = document.createElement("div");
-        div.innerHTML = letter;
+        if (letter.length > 1) div.innerHTML = letter.charAt(0);
+        if (letter.length === 1) div.innerHTML = letter;
         div.className = "letters";
         div.id = "topletter" + i;
         
@@ -57,13 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 topGuess[i] = div.innerHTML;
             }
         })
-        // letter = div.innerHTML;
+        console.log(letter, i)
         top.appendChild(div);
     })
 
     game.board.hiddenBottomStrand.map((letter, i) => {
         let div = document.createElement("div");
-        div.innerHTML = letter;
+        if (letter.length > 1) div.innerHTML = letter.charAt(0);
+        if (letter.length === 1) div.innerHTML = letter;
         div.className = "letters";
         div.id = "bottomletter" + i;
         div.addEventListener("click", () => {
@@ -82,13 +85,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         // letter = div.innerHTML;
+        console.log(letter, i)
         bottom.appendChild(div);
     })
 
 
     game.board.hiddenLetters.map((possible, i) => {
         let div = document.createElement("div");
-        div.innerHTML = possible;
+        div.innerHTML = possible.charAt(0);
         div.className = "possibles"
         div.id = "possible" + i;
         div.addEventListener("click", () => {
@@ -102,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }           
         })
         possible = div.innerHTML;
+        console.log(possible, i)
         pool.appendChild(div);
     })
 
