@@ -27,10 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     typeWriter();
-    
+
     let guessesRemaining = document.getElementById("guesses");
     guessesRemaining.innerHTML = game.numGuesses + " guesses left";
-    // debugger
 
     let clicks = 0;
     let topGuess = game.board.hiddenTopStrand
