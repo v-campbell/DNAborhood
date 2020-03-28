@@ -140,6 +140,7 @@ html {
     height: 3rem;
     padding-top: none;
     cursor: pointer;
+    outline: none;
 }
 
 .selected {
@@ -216,8 +217,8 @@ html {
     position: absolute;
     left: 26rem;
     bottom: 0;
-    width: 18rem;
-    height: 30rem;
+    width: 15rem;
+    height: 25rem;
 
 }
 
@@ -265,7 +266,6 @@ html {
     transition: transform .3s;
     transform: scale(var(--scale, 1)) translateZ(0);
     animation: var(--name, unchecked) var(--duration) ease forwards;
-    
 }
     .plus-minus:before,
     .plus-minus:after {
