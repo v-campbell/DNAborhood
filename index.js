@@ -2,7 +2,7 @@ const Game = require('./lib/game');
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
-
+    const newStrand = document.getElementById("new-strand");
     // --------start game--------
 
     let game = new Game();
@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let tryAgainButton = document.createElement("button");
     tryAgainButton.id = "tryAgainButton"
-    tryAgainButton.innerHTML = "try again";
+    tryAgainButton.innerHTML = "New Strand";
     
     tryAgainButton.addEventListener('click', () => {
       game.runGame();
     //   console.log('is the console running? WE GOTTA BE IN HERE')
     //   tryAgainButton.innerHTML = "no worky"
     })
-    root.appendChild(tryAgainButton);
+    newStrand.appendChild(tryAgainButton);
 
     // --------type intro--------
 

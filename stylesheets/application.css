@@ -1,6 +1,6 @@
 /* ------------page styling------------- */
 
-html {
+body {
     background-image: url(../images/bg.png);
     background-size: cover;
     /* background-size: 700px;
@@ -8,31 +8,64 @@ html {
     font-family: 'Press Start 2P', cursive;
     size: 12px;
     color: #b2ced1;
-     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     /* z-index: 1000; */
 }
 
 #page {
-    /* display: flex; */
+    display: flex;
+    align-items: flex-end;
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+    /* border: 3px solid red; */
 }
 
-/* #right {
+#left {
     display: flex;
     flex-direction: column;
-} */
+    align-items: center;
+    justify-content: flex-start;
+    /* position: relative; */
+    width: 50%;
+    /* border: 3px solid orange; */
+    /* justify-content: space-between; */
+}
+
+#middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* position: absolute;
+    top: 5rem; */
+    width: 17rem;
+    /* border: 3px solid yellow; */
+    position: absolute;
+    left: 26rem;
+    bottom: 0;
+}
+
+#rosalind {
+    width: 15rem;
+    height: 25rem;
+}
+
+#rosalind:hover {
+    -webkit-transform: scaleX(-1);
+transform: scaleX(-1);
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    /* border: 3px solid green; */
+
+}
 
 #big {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 3rem;
-    bottom: 10rem;
-    left: 33rem;
-    right: 0;
-    margin: auto;
-    /* width: 700px;
-    height: 400px; */
+    /* margin: auto; */
+    margin-top: 6rem;
     width: 38rem;
     height: 25rem;
     /* padding: 3rem 0 0  1rem; */
@@ -42,60 +75,31 @@ html {
 }
 
 /* ------------game styling------------- */
-#game {
-    position: absolute;
-    top: 6rem;
-    bottom: 0rem;
-    left: 0rem;
-    right: 0;
-}
 
-.gamestart {
-    display: none;
-}
-
-.gameend {
-    display: block;
-    /* display: flex; */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.showgame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem 0 0 0;
-}
-
-.hidegame {
-    display: none;
-}
-
-#header-stoplight {
-    position:absolute;
-    top:0;
-    left:0;
-}
-
-#intro, #guesses {
+#intro{
     flex-wrap: wrap;
     line-height: 1rem;
     font-size: 8px;
     color: rgb(47, 255, 75);
-    margin: 2.2rem 0 0 1rem;
-
+    margin: 2rem 0 0 1rem;
+    min-height: 5rem;
 }
+
+#game {
+    display: flex;
+    flex-direction: column;
+}
+
+
 #guesses, #top, #bottom, #pool, #submit {
     display: flex;
     /* margin: 0.5rem; */
     /* flex-direction: column; */
+}
+
+#guesses {
+    font-size: 10px;
+    color: rgb(114, 26, 26);
 }
 
 #top, #bottom {
@@ -130,23 +134,23 @@ html {
 #submit {
     display: flex;
     font-family: 'Press Start 2P', cursive;
-    size: 15px;
+    font-size: 20px;
     color: #b2ced1;
     background-color: transparent;
     justify-content: center;
     border: none;
     letter-spacing: 0.2rem;
-    width: 6rem;
-    height: 3rem;
+    min-width: 6rem;
+    min-height: 3rem;
     padding-top: none;
     cursor: pointer;
     outline: none;
+    animation: pulse 2s infinite;
 }
 
 .selected {
     color: rgb(132, 168, 247);
     animation: pulse 2s infinite;
-
 }
 
 @keyframes pulse {
@@ -163,74 +167,100 @@ html {
 	}
 }
 
+.hide-game-over {
+    display: none;
+}
+
+.show-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0 0 0;
+}
+
+.show-game-over {
+    display: block;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.hide-game {
+    display: none !important;
+    color: red;
+}   
+
 /* ------------image styling------------- */
 
-#computer, #active-computer {
+#stoplight {
     position: absolute;
+    width: 5rem;
+    /* top: 4rem; */
+}
+
+#posters, #comp {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* border: 3px solid blue; */
+  position: absolute;
+  bottom: 20rem;
+  left: 6rem;
+}
+
+#posters > div, #comp > img {
+ padding: 50px;
+ grid-row-start: 1;
+ grid-column-start: 1;
+}
+
+#posters > div > img {
+    width: 10rem;
+    height: 12rem;
+}
+
+#posters > div:nth-child(2) > img:hover {
+    opacity: 0;
+}
+
+#computer, #active-computer {
     width: 12rem;
     height: 10rem;
-    left: 10.5rem;
-    top: 18.5rem;
-}
-
-#poster, #active-poster {
     position: absolute;
-    top: 3rem;
-    left: 3rem;
-    width: 10rem;
-    height: 12rem;
-}
-
-#poster:hover {
-    top: 3rem;
-    left: 3rem;
-    width: 10rem;
-    height: 12rem;
-    opacity:0;
-}
-
-#dna-poster, #active-dna-poster {
-    position: absolute;
-    top: 3rem;
-    left: 18rem;
-    width: 10rem;
-    height: 12rem;
-}
-
-#dna-poster:hover {
-    top: 3rem;
-    left: 18rem;
-    width: 10rem;
-    height: 12rem;
-    opacity:0;
+    bottom: 0rem;
+    top: -4rem;
+    left: 0rem;
 }
 
 #desk {
+    width: 19rem;
+    height: 19rem;
     position: absolute;
-    /* top: 22rem; */
-    left: 5rem;
     bottom: 0;
-    /* z-index: 1; */
+    left: 4rem;
 }
 
-#rosalind {
-    position: absolute;
-    left: 26rem;
-    bottom: 0;
-    width: 15rem;
-    height: 25rem;
-
-}
-
-#rosalind:hover {
-    -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+#new-strand > button {
+    outline: none;
+    border: 6px solid #5b6a87;
+    font-family: 'Press Start 2P', cursive;
+    size: 12px;
+    color: #5b6a87;
+    background: #eff0f1a8;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 1rem;
 }
 
 #beaker {
-    position: absolute;
+    /* position: absolute;
     left: 37rem;
-    bottom: 0;
+    bottom: 0; */
     width: 3rem;
     height: 4rem;
 }
