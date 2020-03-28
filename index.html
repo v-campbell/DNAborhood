@@ -14,50 +14,70 @@
 </head>
 
 <body>
+    <!-- <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+    
+    <div class="dragDivs">
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12234558/Chinook-On-White-03.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+        </div>
+    
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div> -->
     <div id='root'></div>
 
-    <div id="big">
-        <!-- <script>
-            function allowDrop(ev) {
-                ev.preventDefault();
-            }
+    <div id="page">
 
-            function drag(ev) {
-                ev.dataTransfer.setData("text", ev.target.id);
-            }
+        <!-- <div id="right"> -->
+            <div id="big">
+                <img id ="header-stoplight" src="./images/stoplight.png" alt="stoplight">
+                <div id="content">
+                    <div id="intro"></div>
+                    <!-- Welcome to The DNAborhood! -->
+                    <div id="game">
+                        <div id="letters">
+                            <div id ="top"></div>
+                            <div id ="bottom"></div>
+                            <div id ="pool"></div>
+                            <button id ="submit">Submit</button>
+                            <div id ="guesses"></div>
+                        </div>
+                    </div>
 
-            function drop(ev) {
-                ev.preventDefault();
-                const data = ev.dataTransfer.getData("text");
-                ev.target.appendChild(document.getElementById(data));
-            }
-        </script>
-        
-        <div class="dragDivs">
-            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12234558/Chinook-On-White-03.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+                    <div id="gameover"></div>
+                </div>
+                <!-- <input type="checkbox" class="plus-minus"> -->
             </div>
-        
-            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        </div> -->
-        <img id ="header-stoplight" src="./images/stoplight.png" alt="stoplight">
-        <div id="content">
-            <div id="intro"></div>
-            
-                <!-- Welcome to The DNAborhood! -->
-            <div id="game">
-                <div id ="guesses"></div>
-                <div id ="top"></div>
-                <div id ="bottom"></div>
-                <div id ="pool"></div>
-                <button id ="submit">Submit</button>
-            </div>
+            <!-- </div> -->
 
-            <div id="gameover"></div>
-        </div>
-        <!-- <input type="checkbox" class="plus-minus"> -->
+
+        <img id="active-computer" src="./images/computer.gif" alt="Computer">
+        <img id="computer" src="./images/computer.png" alt="Computer">
+        
+        <img id="desk" src="./images/desk.png" alt="Desk">
+        <img id="rosalind" src="./images/rosalind.png" alt="Rosalind">
+        <!-- <img id="poster" src="./images/poster.png" alt="Poster"> -->
+
+        <img id="active-poster" src="./images/poster.gif">
+        <img id="poster" src="./images/poster.png">
+
+        <img id="active-dna-poster" src="./images/dnaposter.gif">
+        <img id="dna-poster" src="./images/dnaposter.png">
+        <!-- <img class="poster" src="./images/poster.png"> -->
     </div>
-
 
 </body>
 

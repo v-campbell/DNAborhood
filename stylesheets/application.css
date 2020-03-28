@@ -1,7 +1,4 @@
-/* div {
-    display: flex;
-    justify-content: center;
-} */
+/* ------------page styling------------- */
 
 html {
     background-image: url(../images/bg.png);
@@ -11,26 +8,46 @@ html {
     font-family: 'Press Start 2P', cursive;
     size: 12px;
     color: #b2ced1;
+     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
     /* z-index: 1000; */
 }
+
+#page {
+    /* display: flex; */
+}
+
+/* #right {
+    display: flex;
+    flex-direction: column;
+} */
 
 #big {
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
     position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
+    top: 3rem;
+    bottom: 10rem;
+    left: 33rem;
     right: 0;
     margin: auto;
-    width: 700px;
-    height: 400px;
+    /* width: 700px;
+    height: 400px; */
+    width: 38rem;
+    height: 25rem;
     /* padding: 3rem 0 0  1rem; */
     background-color: rgb(24, 23, 23);
     box-shadow: 5px 5px 5px 0px rgb(32, 32, 32);
     border-radius: 5px;
+}
+
+/* ------------game styling------------- */
+#game {
+    position: absolute;
+    top: 6rem;
+    bottom: 0rem;
+    left: 0rem;
+    right: 0;
 }
 
 .gamestart {
@@ -67,12 +84,12 @@ html {
     left:0;
 }
 
-#intro {
+#intro, #guesses {
     flex-wrap: wrap;
     line-height: 1rem;
     font-size: 8px;
     color: rgb(47, 255, 75);
-    margin: 1rem 0 0 1rem;
+    margin: 2.2rem 0 0 1rem;
 
 }
 #guesses, #top, #bottom, #pool, #submit {
@@ -82,6 +99,8 @@ html {
 }
 
 #top, #bottom {
+    display: flex;
+    justify-content: center;
     letter-spacing: 2rem;
     margin-top: 1rem;
     transform: scale(1);
@@ -94,6 +113,13 @@ html {
     animation: rainbow 3s ease infinite; */
 }
 
+#letters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 #pool {
     letter-spacing: 2rem;
     margin: 1rem;
@@ -101,12 +127,19 @@ html {
     cursor: pointer;
 }
 
-.computer {
-    position: absolute;
-    top: 22rem;
-    left: 4rem;
-    width: 20rem;
-    height: 15rem;
+#submit {
+    display: flex;
+    font-family: 'Press Start 2P', cursive;
+    size: 15px;
+    color: #b2ced1;
+    background-color: transparent;
+    justify-content: center;
+    border: none;
+    letter-spacing: 0.2rem;
+    width: 6rem;
+    height: 3rem;
+    padding-top: none;
+    cursor: pointer;
 }
 
 .selected {
@@ -115,19 +148,85 @@ html {
 
 }
 
-#submit {
-    font-family: 'Press Start 2P', cursive;
-    size: 12px;
-    color: #b2ced1;
-    background-color: transparent;
-    text-align: center;
-    border: none;
-    width: 6rem;
-    height: 3rem;
-    padding-top: none;
-    cursor: pointer;
-    outline: none;
+@keyframes pulse {
+	0% {
+		/* transform: scale(0.95); */
+	}
+
+	50% {
+        /* transform: scale(1); */
+        color: rgba(132, 168, 247, 0.459)	}
+
+	100% {
+		/* transform: scale(0.95); */
+	}
 }
+
+/* ------------image styling------------- */
+
+#computer, #active-computer {
+    position: absolute;
+    width: 12rem;
+    height: 10rem;
+    left: 10.5rem;
+    top: 18.5rem;
+}
+
+#poster, #active-poster {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    width: 10rem;
+    height: 12rem;
+}
+
+#poster:hover {
+    top: 3rem;
+    left: 3rem;
+    width: 10rem;
+    height: 12rem;
+    opacity:0;
+}
+
+#dna-poster, #active-dna-poster {
+    position: absolute;
+    top: 3rem;
+    left: 18rem;
+    width: 10rem;
+    height: 12rem;
+}
+
+#dna-poster:hover {
+    top: 3rem;
+    left: 18rem;
+    width: 10rem;
+    height: 12rem;
+    opacity:0;
+}
+
+#desk {
+    position: absolute;
+    /* top: 22rem; */
+    left: 5rem;
+    bottom: 0;
+    /* z-index: 1; */
+}
+
+#rosalind {
+    position: absolute;
+    left: 26rem;
+    bottom: 0;
+    width: 18rem;
+    height: 30rem;
+
+}
+
+#rosalind:hover {
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+/* ------------random styling------------- */
 
 #div1 {
     border: 3px solid blue;
@@ -143,26 +242,6 @@ html {
     display: flex;
 }
 
-@keyframes rainbow {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-
-@keyframes pulse {
-	0% {
-		/* transform: scale(0.95); */
-	}
-
-	50% {
-        /* transform: scale(1); */
-        color: rgba(132, 168, 247, 0.459)	}
-
-	100% {
-		/* transform: scale(0.95); */
-	}
-}
 
 .plus-minus {
     --primary: #1E2235;
@@ -255,9 +334,4 @@ html {
         background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
         background-position: 50% 50%;
     }
-}
-
-html {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
 }
