@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------type intro--------
 
     let l = 0;
-    let txt = 'DrFranklins-MacBook-Pro: ~DNAborhood$ > Hello, my name is Dr Rosalind Franklin. > I need your help! > Guess the genome seqeunce by choosing the correct nucleotides. > ';
+    let txt = 'DrFranklins-MacBook-Pro: ~DNAborhood$ > Hello, my name is Dr Rosalind Franklin and I need your help! > Guess the genome seqeunce by choosing the correct nucleotides. > Hint: In DNA, As are paired with Ts and Cs are paired with Gs. > ';
     let speed = 30; /* The speed/duration of the effect in milliseconds */
 
     let intro = document.getElementById("intro");

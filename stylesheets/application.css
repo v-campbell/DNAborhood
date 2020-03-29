@@ -438,7 +438,7 @@ body {
   width: 2px;
   height: 2px;
   z-index: 1;
-  -webkit-box-shadow: 0 0 50px 30px rgba(72,170,72,.3);
+  -webkit-box-shadow: 0 0 50px 30px rgba(72, 170, 72, 0.486);
   box-shadow: 0 0 50px 30px rgba(72,170,72,.3);
   -webkit-animation: green_glow_animation 2s cubic-bezier(.25,.1,.2,1) infinite;
   animation: green_glow_animation 2s cubic-bezier(.25,.1,.2,1) infinite;
