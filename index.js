@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let txt = 'DrFranklins-MacBook-Pro: ~DNAborhood$ > Hello, my name is Dr Rosalind Franklin. > I need your help! > Guess the genome seqeunce by choosing the correct nucleotides. > ';
     let speed = 30; /* The speed/duration of the effect in milliseconds */
 
-    const intro = document.getElementById("intro");
+    let intro = document.getElementById("intro");
     function typeWriter() {
         if (l < txt.length) {
             if ((txt.charAt(l + 1) === '>')) {
@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     typeWriter();
+
+
 
     // --------image functionality--------
 

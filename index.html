@@ -6,7 +6,7 @@
 <head>
     <title>DNAborhood</title>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Ubuntu" rel="stylesheet">
     <link rel='stylesheet' href='./stylesheets/reset.css'>
     <link rel='stylesheet' href='./stylesheets/application.css'>
     <!-- <script type="text/javascript" src='./index.js'> </script> -->
@@ -51,20 +51,35 @@
                 </div>
             </div>
         
-            <div id='comp'>
-                <img id="active-computer" src="./images/computer.gif" alt="Computer">
-                <img id="computer" src="./images/computer.png" alt="Computer">
-            </div>
-
-            <img id="desk" src="./images/desk.png" alt="Desk">
-
             
+        <div id='comp'>
+            <img id="active-computer" src="./images/computer.gif" alt="Computer">
+            <img id="computer" src="./images/computer.png" alt="Computer">
+        </div>
+
+        
+
+        <div class="item-hints">
+            <div class="hint" data-position="4">
+                <!-- hint content -->
+                <span class="hint-radius"></span>
+                <span class="hint-dot"></span>
+                <div id="hint-content" class="hint-content">
+                </div>
+            </div>
+        </div>
+            
+        <img id="desk" src="./images/desk.png" alt="Desk">
             <!-- <img id="active-dna-poster" src="./images/dnaposter.gif"> -->
             <!-- <img id="beaker" src="./images/beaker.gif"> -->
             <!-- <img id="github" src="./images/github.png"> -->
         </div>
 
         <div id="middle">
+            <!-- <button id="new-strand" class="button">
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+            </button> -->
             <div id="new-strand"></div>
             <img id="rosalind" src="./images/rosalind.gif" alt="Rosalind">
         </div>
