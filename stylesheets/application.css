@@ -51,7 +51,7 @@ body {
 
 #rosalind:hover {
     -webkit-transform: scaleX(-1);
-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 #right {
@@ -411,8 +411,9 @@ transform: scaleX(-1);
     height: 60px;
     margin: 150px auto;
 }
-.item-hints .hint::before{ /* little internal square */
+.item-hints .hint::before{ /* little internal diamond*/
   background-color: #fff;
+  /* background-color: #a1b1cf; */
   width: 8px;
   height: 8px;
   z-index: 2;
@@ -475,6 +476,7 @@ transform: scaleX(-1);
 .item-hints .hint-dot { /* circle outline */
   z-index: 3;
   border: 1px solid #fff;
+  border: 1px solid #a1b1cf;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -551,11 +553,12 @@ transform: scaleX(-1);
 .item-hints .hint-content { /*hide and position pop up text */
     color: rgba(255, 255, 255, 0.363);
     font-family: 'Ubuntu', sans-serif;
-    width: 100px;
+    width: 200px;
     position: absolute;
     z-index: 1;
-    /* background-color: red; */
-    padding: 12px 0;
+    background-color: #4e8a91;
+    border-radius: 1rem;
+    padding: 12px;
     opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity .7s ease,visibility .7s ease;
@@ -567,10 +570,10 @@ transform: scaleX(-1);
 
 .item-hints .hint:hover .hint-content { /* show pop up text on hover */
   color: white;
-  width: 100px;
+  width: 200px;
   position: absolute;
   z-index: 5;
-  padding: 12px 0;
+  padding: 12px;
   opacity: 1;
   visibility: visible !important;
   -webkit-transition: opacity .7s ease,visibility .7s ease;
@@ -579,7 +582,20 @@ transform: scaleX(-1);
   visibility: hidden;
   pointer-events: none
 }
+/* 
+.rosalind-hints .hint:hover .hint-content {
+    width: 200px;
+    padding-left: 1rem;
+}
 
+.rosalind-hints .hint:hover .hint-content {
+    width: 200px;
+    padding-left: 1rem;
+} */
+
+.rosalind-hints .hint .hint-dot {
+    display: none;
+}
 .item-hints .hint-content::before { /* underline */
   width: 0px;
   bottom: 0;
@@ -591,7 +607,7 @@ transform: scaleX(-1);
   transition: width 0.4s;
 }
 .item-hints .hint:hover .hint-content::before { /* length of underline */
-  width: 100px;
+  width: 150px;
   transition: width 0.4s;
 }
 
@@ -602,7 +618,7 @@ transform: scaleX(-1);
   transform: rotate(-225deg);
   bottom: 0;
   left: 0;
-  width: 50px;
+  width: 80px;
   content: '';
   background-color: #fff;
   height: 1px;

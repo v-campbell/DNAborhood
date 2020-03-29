@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let tryAgainButton = document.createElement("button");
     tryAgainButton.id = "tryAgainButton"
-    tryAgainButton.innerHTML = "New Strand";
+    tryAgainButton.innerHTML = "New Game";
     
     tryAgainButton.addEventListener('click', () => {
       game.runGame();
