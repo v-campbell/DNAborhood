@@ -34,9 +34,12 @@ Welcome to the DNAborhood - learn about genome sequencing through a fun, excitin
 ## Code Snippets
 
 <img src="gifs/hoverable.gif" width="500">
+
+* Image 1 - Interactive elements
+
 <img src="gifs/gameplay.gif" width="500">
 
-Placeholder Image
+* Image 2 - Sample gameplay
 
 ## Future considerations
 
