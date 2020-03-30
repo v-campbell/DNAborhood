@@ -44,6 +44,22 @@ body {
     bottom: 0;
 }
 
+a { 
+  color: inherit; 
+  text-decoration: inherit;
+  font-family: inherit;
+} 
+
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* background: rgba(114, 128, 126, 0.116); */
+  padding: 1rem;
+  width: 6rem;
+}
+
 #rosalind {
     width: 15rem;
     height: 25rem;

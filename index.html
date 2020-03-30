@@ -11,6 +11,7 @@
     <link rel='stylesheet' href='./stylesheets/reset.css'>
     <link rel='stylesheet' href='./stylesheets/application.css'>
     <link rel="icon" href="./images/testtube.png" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -37,83 +38,96 @@
     
         <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div> -->
-    
-    <div id="page">
-        <div id="left">
-            <!-- <div></div> -->
-            <div id="posters">
-                <div id="posters1">
-                    <!-- <img id="active-diagram-poster" src="./images/poster.gif"> -->
-                    <img id="active-dna-poster" src="./images/dnaposter.gif">
-                </div>
-                <div id="posters2">
-                    <!-- <img id="diagram-poster" src="./images/poster.png"> -->
-                    <img id="dna-poster" src="./images/dnaposter.png">
-                </div>
-            </div>
-        
-        <div id='comp'>
-            <img id="active-computer" src="./images/computer.gif" alt="Computer">
-            <img id="computer" src="./images/computer.png" alt="Computer">
-        </div>
+    <div>
 
-        <div class="item-hints">
-            <div class="hint" data-position="4">
-                <!-- hint content -->
-                <span class="hint-radius"></span>
-                <span class="hint-dot"></span>
-                <div id="hint-content" class="hint-content">
-                    Whole Genome Sequencing is the process of determining the nucleotide sequence of an organism's DNA and is critical in the development of vaccines to combat virus outbreaks, including COVID-19.
+        <div id="page">
+            <div id="left">
+                <!-- <div></div> -->
+                <div id="posters">
+                    <div id="posters1">
+                        <!-- <img id="active-diagram-poster" src="./images/poster.gif"> -->
+                        <img id="active-dna-poster" src="./images/dnaposter.gif">
+                    </div>
+                    <div id="posters2">
+                        <!-- <img id="diagram-poster" src="./images/poster.png"> -->
+                        <img id="dna-poster" src="./images/dnaposter.png">
+                    </div>
                 </div>
-            </div>
-        </div>
             
-        <img id="desk" src="./images/desk.png" alt="Desk">
-            <!-- <img id="active-dna-poster" src="./images/dnaposter.gif"> -->
-            <!-- <img id="beaker" src="./images/beaker.gif"> -->
-            <!-- <img id="github" src="./images/github.png"> -->
-        </div>
+            <div id='comp'>
+                <img id="active-computer" src="./images/computer.gif" alt="Computer">
+                <img id="computer" src="./images/computer.png" alt="Computer">
+            </div>
 
-        <div id="middle">
-            <!-- <button id="new-strand" class="button">
-                <div class="button__horizontal"></div>
-                <div class="button__vertical"></div>
-            </button> -->
-            <div id="new-strand"></div>
-            <br />
-            <div class="item-hints rosalind-hints">
+            <div class="item-hints">
                 <div class="hint" data-position="4">
                     <!-- hint content -->
                     <span class="hint-radius"></span>
                     <span class="hint-dot"></span>
                     <div id="hint-content" class="hint-content">
-                        Rosalind Franklin is best known for her contributions to the discovery of the molecular structure of deoxyribonucleic acid (DNA).
-                    </div>
-                    <img id="rosalind" src="./images/rosalind.gif" alt="Rosalind">
-                </div>
-            </div>
-        </div>
-            
-        <div id="right">
-            <div id='root'></div>
-            <div id="big">
-                <img id="stoplight" src="./images/stoplight.png" alt="">
-                <div id="intro"></div>
-                <div id="game">
-                    <div id="letters">
-                        <div id="top"></div>
-                        <div id="bottom"></div>
-                        <div id="pool"></div>
-                        <button id="submit">SUBMIT</button>
-                        <div id="guesses"></div>
+                        Whole Genome Sequencing is the process of determining the nucleotide sequence of an organism's DNA and is critical in the development of vaccines to combat virus outbreaks, including COVID-19.
                     </div>
                 </div>
-    
-                <div id="gameover"></div>
-            <!-- <input type="checkbox" class="plus-minus"> -->
             </div>
-        </div>
+                
+            <img id="desk" src="./images/desk.png" alt="Desk">
+                <!-- <img id="active-dna-poster" src="./images/dnaposter.gif"> -->
+                <!-- <img id="beaker" src="./images/beaker.gif"> -->
+                <!-- <img id="github" src="./images/github.png"> -->
+            </div>
 
+            <div id="middle">
+                <!-- <button id="new-strand" class="button">
+                    <div class="button__horizontal"></div>
+                    <div class="button__vertical"></div>
+                </button> -->
+                <div id="new-strand"></div>
+                <br />
+                <div class="item-hints rosalind-hints">
+                    <div class="hint" data-position="4">
+                        <!-- hint content -->
+                        <span class="hint-radius"></span>
+                        <span class="hint-dot"></span>
+                        <div id="hint-content" class="hint-content">
+                            Rosalind Franklin is best known for her contributions to the discovery of the molecular structure of deoxyribonucleic acid (DNA).
+                        </div>
+                        <img id="rosalind" src="./images/rosalind.gif" alt="Rosalind">
+                    </div>
+                </div>
+            </div>
+                
+            <div id="right">
+                <div id='root'></div>
+                <div id="big">
+                    <img id="stoplight" src="./images/stoplight.png" alt="">
+                    <div id="intro"></div>
+                    <div id="game">
+                        <div id="letters">
+                            <div id="top"></div>
+                            <div id="bottom"></div>
+                            <div id="pool"></div>
+                            <button id="submit">SUBMIT</button>
+                            <div id="guesses"></div>
+                        </div>
+                    </div>
+        
+                    <div id="gameover"></div>
+                <!-- <input type="checkbox" class="plus-minus"> -->
+                </div>
+            </div>
+
+        </div>
+        <div id="footer">
+            <a href="">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/v-campbell/DNAborhood">
+                <i class="fa fa-github-alt"></i>
+            </a>
+            <a href="https://en.wikipedia.org/wiki/DNA_sequencing">
+                <i class="fa fa-wikipedia-w"></i>
+            </a>
+        </div>
     </div>
 
     <script type="application/javascript" src="./bundle.js"></script>

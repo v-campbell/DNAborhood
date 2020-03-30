@@ -291,7 +291,7 @@ var Board = /*#__PURE__*/function () {
             topGuess[i] = div.innerHTML;
           }
         });
-        console.log(letter, i);
+        // console.log(letter, i);
         top.appendChild(div);
       });
       this.hiddenBottomStrand.map(function (letter, i) {
@@ -330,7 +330,7 @@ var Board = /*#__PURE__*/function () {
           }
         }); // letter = div.innerHTML;
 
-        console.log(letter, i);
+        // console.log(letter, i);
         bottom.appendChild(div);
       });
       this.hiddenLetters.map(function (possible, i) {
