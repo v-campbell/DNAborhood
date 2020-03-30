@@ -227,7 +227,7 @@ body {
 
 #gameover {
   /* display: flex; */
-  font-size: 16px;
+  font-size: 10px;
   text-align: center;
   color: #4e8a91;
   margin: 3rem;
@@ -676,3 +676,6 @@ body {
   margin-left: 56px;
 }
 
+.green {
+  color: rgb(98, 236, 98);
+}

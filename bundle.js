@@ -257,7 +257,19 @@ var Board = /*#__PURE__*/function () {
       top.innerHTML = "";
       bottom.innerHTML = "";
       pool.innerHTML = "";
-      guessesRemaining.innerHTML = this.numGuesses + " guesses left";
+
+      if (this.numGuesses === 4) {
+        // debugger
+        guessesRemaining.innerHTML = this.numGuesses + " guesses left";
+      } else if (this.numGuesses === 3) {
+        debugger;
+        guessesRemaining.innerHTML = "only " + this.numGuesses + " guesses left";
+      } else if (this.numGuesses === 2) {
+        guessesRemaining.innerHTML = "now only " + this.numGuesses + " guesses left";
+      } else if (this.numGuesses === 1) {
+        guessesRemaining.innerHTML = "last guess! make it count!";
+      }
+
       var clicks = 0;
       var topGuess = this.hiddenTopStrand;
       var bottomGuess = this.hiddenBottomStrand;
@@ -363,7 +375,7 @@ var Board = /*#__PURE__*/function () {
                 guess[i][j] += "X";
               }
             }
-          }
+          } else {}
         }
       }
 
@@ -386,11 +398,19 @@ var Board = /*#__PURE__*/function () {
           guess[0].map(function (letter, i) {
             var topDiv = document.getElementById("topletter" + i);
             topDiv.innerHTML = letter.charAt(0);
+
+            if (letter !== "-") {
+              topDiv.className = " green";
+            }
           }); // re-show bottom
 
           guess[1].map(function (letter, i) {
             var bottomDiv = document.getElementById("bottomletter" + i);
             bottomDiv.innerHTML = letter.charAt(0);
+
+            if (letter !== "-") {
+              bottomDiv.className = " green";
+            }
           }); // re-show possibles
 
           this.tempPool.map(function (letter, i) {
@@ -414,9 +434,9 @@ var Board = /*#__PURE__*/function () {
       game.className = "hide-game";
 
       if (this.win) {
-        gameOverDiv.innerHTML = "You did it! Click new game to play again, since you're sooo good at this!";
+        gameOverDiv.innerHTML = "You did it! Click new game to play again, since you're sooo good at this! Or maybe the game is broken and you're not actually good at this. Who knows.";
       } else {
-        gameOverDiv.innerHTML = "Uh oh, you ran out of guesses :( Click new game to try again! Unless you don't think you're good enough...";
+        gameOverDiv.innerHTML = "Game over :( That's all I have for you. Sorry that was such a waste of time. Click new game to try again! Or don't. I get it.";
       }
     }
   }]);
