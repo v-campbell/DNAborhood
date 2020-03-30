@@ -252,17 +252,15 @@ var Board = /*#__PURE__*/function () {
       var guessesRemaining = document.getElementById("guesses");
       var top = document.getElementById("top");
       var bottom = document.getElementById("bottom");
-      var pool = document.getElementById("pool"); // debugger
-
+      var pool = document.getElementById("pool");
       top.innerHTML = "";
       bottom.innerHTML = "";
       pool.innerHTML = "";
 
       if (this.numGuesses === 4) {
-        // debugger
         guessesRemaining.innerHTML = this.numGuesses + " guesses left";
       } else if (this.numGuesses === 3) {
-        debugger;
+        // debugger
         guessesRemaining.innerHTML = "only " + this.numGuesses + " guesses left";
       } else if (this.numGuesses === 2) {
         guessesRemaining.innerHTML = "now only " + this.numGuesses + " guesses left";
@@ -307,13 +305,28 @@ var Board = /*#__PURE__*/function () {
             div.className += " selected";
             clicks += 1;
           } else {
+            // let selected = document.getElementsByClassName("selected").item(0);
+            // selected.className = selected.className.replace(" selected", "")
+            // let temp = div.innerHTML;
+            // if (temp.length > 2) {
+            //   div.innerHTML = selected.innerHTML;
+            //   selected.innerHTML = temp;
+            //   clicks = 0;
+            //   bottomGuess[i] = div.innerHTML;
+            // } else if (temp.length === 1 && selected.innerHTML.length > 1) {
+            //   temp = div.innerHTML + "X";
+            //   div.innerHTML = selected.innerHTML.charAt(0);
+            //   selected.innerHTML = temp;
+            //   clicks = 0;
+            //   bottomGuess[i] = div.innerHTML;
+            // }
             var selected = document.getElementsByClassName("selected").item(0);
             selected.className = selected.className.replace(" selected", "");
             var temp = div.innerHTML;
             div.innerHTML = selected.innerHTML;
             selected.innerHTML = temp;
             clicks = 0;
-            bottomGuess[i] = div.innerHTML;
+            topGuess[i] = div.innerHTML;
           }
         }); // letter = div.innerHTML;
 
@@ -359,7 +372,6 @@ var Board = /*#__PURE__*/function () {
       this.match = true;
 
       for (var i = 0; i < 2; i++) {
-        // debugger
         for (var j = 0; j < this.strandLength; j++) {
           // don't touch prepopulated values
           if (guess[i][j].charAt(1) !== "X") {
@@ -415,7 +427,8 @@ var Board = /*#__PURE__*/function () {
 
           this.tempPool.map(function (letter, i) {
             var possible = document.getElementById("possible" + i);
-            possible.innerHTML = letter.charAt(0);
+            if (letter.length === 1) possible.innerHTML = letter;
+            if (letter.length > 1) possible.innerHTML = letter.charAt(0); // possible.innerHTML = letter.charAt(0);
           });
         }
 

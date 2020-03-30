@@ -33,7 +33,7 @@ Play the game live [here!](https://v-campbell.github.io/DNAborhood/)
 
 ## Code Snippets
 
-![beaker](https://github.com/v-campbell/DNAborhood/images/beaker.png)
+<img src="gifs/hoverable.gif" width="200">
 
 Placeholder Image
 
