@@ -1,18 +1,18 @@
 # DNAborhood
-Navigate around Rosalind Franklin's lab and help her sequence some genomes!
+Navigate around Dr. Rosalind Franklin's lab and help her sequence some genomes!
 ***
 
+## Live
+Play the game live [here!](https://v-campbell.github.io/DNAborhood/)
+
 ## Description
-Welcome to the DNAborhood! Learn about genome sequencing through a fun, exciting, and extremely well-executed game and various interactive elements.
+Welcome to the DNAborhood - learn about genome sequencing through a fun, exciting, and extremely well-executed game and various interactive elements.
 
 ## Overview
 * New game will randomly generate two strings, randomly hide characters in those strings and start you off with 4 guesses.
 * Sounds hard? Fear not. The top string and bottom string are connected, just like real DNA.
 * You win by filling in the spaces with available letters from the pool and guessing the correct sequence.
 * Hover over the glowing green orbs on the page to learn more about the wonderful world of DNA!
-
-## Live
-Play the game live [here!](https://v-campbell.github.io/DNAborhood/)
 
 ## Functionality & MVP
 
