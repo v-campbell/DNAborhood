@@ -33,7 +33,8 @@ Welcome to the DNAborhood - learn about genome sequencing through a fun, excitin
 
 ## Code Snippets
 
-<img src="gifs/hoverable.gif" width="200">
+<img src="gifs/hoverable.gif" width="500">
+<img src="gifs/gameplay.gif" width="500">
 
 Placeholder Image
 
