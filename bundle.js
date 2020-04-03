@@ -290,8 +290,8 @@ var Board = /*#__PURE__*/function () {
             clicks = 0;
             topGuess[i] = div.innerHTML;
           }
-        });
-        // console.log(letter, i);
+        }); // console.log(letter, i)
+
         top.appendChild(div);
       });
       this.hiddenBottomStrand.map(function (letter, i) {
@@ -329,8 +329,8 @@ var Board = /*#__PURE__*/function () {
             topGuess[i] = div.innerHTML;
           }
         }); // letter = div.innerHTML;
+        // console.log(letter, i)
 
-        // console.log(letter, i);
         bottom.appendChild(div);
       });
       this.hiddenLetters.map(function (possible, i) {
@@ -449,7 +449,7 @@ var Board = /*#__PURE__*/function () {
       if (this.win) {
         gameOverDiv.innerHTML = "You did it! Click new game to play again, since you're sooo good at this! Or maybe the game is broken and you're not actually good at this. Who knows.";
       } else {
-        gameOverDiv.innerHTML = "Game over :( That's all I have for you. Sorry that was such a waste of time. Click new game to try again! Or don't. I get it.";
+        gameOverDiv.innerHTML = "Game over :( Click new game to try again! Or don't. I get it.";
       }
     }
   }]);
