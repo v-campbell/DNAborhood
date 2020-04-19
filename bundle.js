@@ -167,8 +167,7 @@ var Board = /*#__PURE__*/function () {
     this.match = true;
     this.win = false;
     this.tempPool = this.hiddenLetters;
-    this.gameOver = false; // this.m = 3;
-    // this.nucleotides = ["A", "T", "C", "G"]
+    this.gameOver = false;
   }
 
   _createClass(Board, [{
@@ -218,14 +217,7 @@ var Board = /*#__PURE__*/function () {
       }
 
       return newStrand;
-    } // findPrepopulated() {
-    //   this.prepopulated = this.hiddenLetters.filter(letter => letter !== "-");
-    //   this.prepopulated.map(letter => {
-    //     letter = "X" + letter;
-    //   })
-    //   return this.prepopulated;
-    // }
-
+    }
   }, {
     key: "hideStrands",
     value: function hideStrands() {
@@ -260,7 +252,6 @@ var Board = /*#__PURE__*/function () {
       if (this.numGuesses === 4) {
         guessesRemaining.innerHTML = this.numGuesses + " guesses left";
       } else if (this.numGuesses === 3) {
-        // debugger
         guessesRemaining.innerHTML = "only " + this.numGuesses + " guesses left";
       } else if (this.numGuesses === 2) {
         guessesRemaining.innerHTML = "now only " + this.numGuesses + " guesses left";
@@ -290,8 +281,7 @@ var Board = /*#__PURE__*/function () {
             clicks = 0;
             topGuess[i] = div.innerHTML;
           }
-        }); // console.log(letter, i)
-
+        });
         top.appendChild(div);
       });
       this.hiddenBottomStrand.map(function (letter, i) {
@@ -305,21 +295,6 @@ var Board = /*#__PURE__*/function () {
             div.className += " selected";
             clicks += 1;
           } else {
-            // let selected = document.getElementsByClassName("selected").item(0);
-            // selected.className = selected.className.replace(" selected", "")
-            // let temp = div.innerHTML;
-            // if (temp.length > 2) {
-            //   div.innerHTML = selected.innerHTML;
-            //   selected.innerHTML = temp;
-            //   clicks = 0;
-            //   bottomGuess[i] = div.innerHTML;
-            // } else if (temp.length === 1 && selected.innerHTML.length > 1) {
-            //   temp = div.innerHTML + "X";
-            //   div.innerHTML = selected.innerHTML.charAt(0);
-            //   selected.innerHTML = temp;
-            //   clicks = 0;
-            //   bottomGuess[i] = div.innerHTML;
-            // }
             var selected = document.getElementsByClassName("selected").item(0);
             selected.className = selected.className.replace(" selected", "");
             var temp = div.innerHTML;
@@ -328,9 +303,7 @@ var Board = /*#__PURE__*/function () {
             clicks = 0;
             topGuess[i] = div.innerHTML;
           }
-        }); // letter = div.innerHTML;
-        // console.log(letter, i)
-
+        });
         bottom.appendChild(div);
       });
       this.hiddenLetters.map(function (possible, i) {
@@ -348,8 +321,7 @@ var Board = /*#__PURE__*/function () {
             div.className += " selected";
           }
         });
-        possible = div.innerHTML; // console.log(possible, i)
-
+        possible = div.innerHTML;
         pool.appendChild(div);
       });
       this.submit();
@@ -447,9 +419,9 @@ var Board = /*#__PURE__*/function () {
       game.className = "hide-game";
 
       if (this.win) {
-        gameOverDiv.innerHTML = "You did it! Click new game to play again, since you're sooo good at this! Or maybe the game is broken and you're not actually good at this. Who knows.";
+        gameOverDiv.innerHTML = "You did it! Click new game to play again! Or don't. I definitely get it.";
       } else {
-        gameOverDiv.innerHTML = "Game over :( Click new game to try again! Or don't. I get it.";
+        gameOverDiv.innerHTML = "Oh no, game over. Click new game to try again! Or don't. I get it.";
       }
     }
   }]);
@@ -474,14 +446,13 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Board = __webpack_require__(/*! ./board */ "./lib/board.js"); // const Timer = require('./timer');
-
+var Board = __webpack_require__(/*! ./board */ "./lib/board.js");
 
 var Game = /*#__PURE__*/function () {
   function Game() {
     _classCallCheck(this, Game);
 
-    this.board = new Board(); // this.hoveredCount = 3;
+    this.board = new Board();
   }
 
   _createClass(Game, [{
@@ -497,15 +468,8 @@ var Game = /*#__PURE__*/function () {
       gameOverDiv.className = "hide-game-over";
       var game = document.getElementById("game");
       game.className = "show-game";
-      this.board.printBoard(); // let hint = document.getElementById("hint-content");
-      // hint.onmouseover = this.counter();
-    } //   counter() {
-    //     let hint = document.getElementById("hint-content");
-    //     const facts = ['Whole Genome Sequencing is critical in the development of vaccines, and for increasing the power of molecular epidemiology.', 'Fact 2', 'Fact 3', 'Fact 4'];
-    //     this.hoveredCount = (this.hoveredCount + 1) % facts.length;
-    //     hint.innerHTML = facts[this.hoveredCount];
-    // } 
-
+      this.board.printBoard();
+    }
   }]);
 
   return Game;
