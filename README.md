@@ -75,7 +75,7 @@ this.hiddenTopStrand.map((letter, i) => {
       })
       top.appendChild(div);
     })
-    ```
+```
 
 <img src="gifs/gameplay.gif" width="500">
 
