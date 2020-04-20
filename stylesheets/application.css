@@ -3,21 +3,16 @@
 body {
     background-image: url(../images/bg.png);
     background-size: cover;
-    /* background-size: 700px;
-    background-repeat: repeat; */
     font-family: 'Press Start 2P', cursive;
     size: 12px;
     color: #b2ced1;
     -webkit-font-smoothing: antialiased;
-    /* z-index: 1000; */
 }
 
 #page {
     display: flex;
-    align-items: flex-end;
-    /* justify-content: space-evenly; */
-    /* align-items: center; */
-    /* border: 3px solid red; */
+    /* align-items: flex-end; */
+    justify-content: center;
 }
 
 #left {
@@ -31,22 +26,25 @@ body {
     /* justify-content: space-between; */
 }
 
-#middle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* position: absolute;
-    top: 5rem; */
-    width: 17rem;
-    /* border: 3px solid yellow; */
-    position: absolute;
-    left: 26rem;
-    bottom: 0;
+#left-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  /* border: 3px solid green; */
+}
+
+#left-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 3px solid yellow; */
 }
 
 #rosalind {
     width: 15rem;
-    height: 25rem;
+    height: 22rem;
 }
 
 #rosalind:hover {
@@ -57,15 +55,18 @@ body {
 #right {
     display: flex;
     flex-direction: column;
-    /* border: 3px solid green; */
-
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid red; */
+    /* width: 100%; */
+    /* height: 100%; */
 }
 
 #big {
     display: flex;
     flex-direction: column;
     /* margin: auto; */
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
     width: 38rem;
     height: 25rem;
     /* padding: 3rem 0 0  1rem; */
@@ -132,23 +133,6 @@ body {
     color: #b2ced128;
     cursor: pointer;
 }
-
-/* #submit {
-    display: flex;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 20px;
-    color: #b2ced1;
-    background-color: transparent;
-    justify-content: center;
-    border: none;
-    letter-spacing: 0.2rem;
-    min-width: 6rem;
-    min-height: 3rem;
-    padding-top: none;
-    cursor: pointer;
-    outline: none;
-    animation: pulse 2s infinite;
-} */
 
 .selected {
     color: rgb(132, 168, 247);
@@ -246,9 +230,9 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   /* border: 3px solid blue; */
-  position: absolute;
+  /* position: absolute;
   bottom: 20rem;
-  left: 6rem;
+  left: 6rem; */
 }
 
 #posters > div, #comp > img {
@@ -258,29 +242,43 @@ body {
 }
 
 #posters > div > img {
-    width: 10rem;
-    height: 12rem;
+    width: 9rem;
+    height: 11rem;
 }
 
 #posters > div:nth-child(2) > img:hover {
     opacity: 0;
 }
 
-#computer, #active-computer {
+/* #computer, #active-computer {
     width: 12rem;
-    height: 10rem;
-    position: absolute;
-    bottom: 0rem;
+    height: 10rem; */
+    /* position: absolute; */
+    /* bottom: 0rem;
     top: -4rem;
-    left: 0rem;
+    left: 0rem; */
+/* } */
+
+#desksquare {
+  position: relative;
+    border: 3px solid greenyellow;
+
 }
 
 #desk {
-    width: 19rem;
-    height: 19rem;
+    width: 20rem;
+    height: 20rem;
+    z-index: 2;
     position: absolute;
-    bottom: 0;
-    left: 4rem;
+      border: 3px solid purple;
+
+}
+
+.comp-hints {
+  /* position: absolute; */
+  z-index: 1;
+  border: 3px solid red;
+  position: absolute;
 }
 
 #new-strand > button, #submit {
@@ -301,15 +299,6 @@ body {
     background: rgba(0, 18, 100, 0.24);
 }
 
-
-#beaker {
-    /* position: absolute;
-    left: 37rem;
-    bottom: 0; */
-    width: 3rem;
-    height: 4rem;
-    z-index: 1;
-}
 
 a { 
   color: inherit; 
@@ -435,16 +424,9 @@ a {
     }
 }
 
-/* html,body{
-  height: 100%;
-  background: #212121;
-  line-height: 24px;
-  letter-spacing: 1px;
-} */
+
 .item-hints{
-  /* height: 300px;
-  width: 100px; */
-  /* margin: 250px auto; */
+
 }
 .item-hints .hint { /* overall button */
     position: relative;
@@ -453,14 +435,14 @@ a {
     align-items: center;
     width: 60px;
     height: 60px;
-    margin: 150px auto;
 }
+
 .item-hints .hint::before{ /* little internal diamond*/
   background-color: #fff;
   /* background-color: #a1b1cf; */
   width: 8px;
   height: 8px;
-  z-index: 2;
+  z-index: 1;
   -webkit-clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);
   clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);
   content: '';
@@ -518,7 +500,7 @@ a {
   }
 }
 .item-hints .hint-dot { /* circle outline */
-  z-index: 3;
+  z-index: 1;
   border: 1px solid #fff;
   border: 1px solid #a1b1cf;
   border-radius: 50%;
@@ -616,7 +598,7 @@ a {
   color: white;
   width: 200px;
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   padding: 12px;
   opacity: 1;
   visibility: visible !important;
@@ -626,16 +608,6 @@ a {
   visibility: hidden;
   pointer-events: none
 }
-/* 
-.rosalind-hints .hint:hover .hint-content {
-    width: 200px;
-    padding-left: 1rem;
-}
-
-.rosalind-hints .hint:hover .hint-content {
-    width: 200px;
-    padding-left: 1rem;
-} */
 
 .rosalind-hints .hint .hint-dot {
     display: none;
@@ -674,10 +646,7 @@ a {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
-.item-hints .hint:hover .hint-content::after {
-  /* opacity: 1;
-  visibility: visible; */
-}
+
 .item-hints .hint[data-position="4"] .hint-content { /* position pop out */
   bottom: 85px;
   left: 50%;

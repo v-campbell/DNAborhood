@@ -42,61 +42,63 @@
 
         <div id="page">
             <div id="left">
-                <div id="posters">
-                    <div id="posters1">
-                        <img id="active-diagram-poster" src="./images/poster.gif">
-                        <img id="active-dna-poster" src="./images/dnaposter.gif">
-                    </div>
-                    <div id="posters2">
-                        <img id="diagram-poster" src="./images/poster.png">
-                        <img id="dna-poster" src="./images/dnaposter.png">
-                    </div>
-                </div>
-            
-                <div id='comp'>
-                    <img id="active-computer" src="./images/computer.gif" alt="Computer">
-                    <img id="computer" src="./images/computer.png" alt="Computer">
-                </div>
-
-                <div class="item-hints">
-                    <div class="hint" data-position="4">
-                        <!-- hint content -->
-                        <span class="hint-radius"></span>
-                        <span class="hint-dot"></span>
-                        <div id="hint-content" class="hint-content">
-                            Whole Genome Sequencing is the process of determining the nucleotide sequence of an organism's DNA and is critical in the development of vaccines to combat virus outbreaks, including COVID-19.
+                <div id="left-top">
+                    <!-- top left square -->
+                    <div id="posters">
+                        <div id="posters1">
+                            <img id="active-diagram-poster" src="./images/poster.gif">
+                            <img id="active-dna-poster" src="./images/dnaposter.gif">
+                        </div>
+                        <div id="posters2">
+                            <img id="diagram-poster" src="./images/poster.png">
+                            <img id="dna-poster" src="./images/dnaposter.png">
                         </div>
                     </div>
+                    
+                    <!-- top right square -->
+                    <!-- <div id="new-strand"></div> -->
+                </div>
+
+                <div id="left-bottom">
+                    <!-- bottom left square -->
+                    <div id='desksquare'>
+                        <img id="desk" src="./images/desk1.png" alt="Desk">
+                        <div class="item-hints comp-hints">
+                            <div class="hint" data-position="4">
+                                <span class="hint-radius"></span>
+                                <span class="hint-dot"></span>
+                                <div id="hint-content" class="hint-content">
+                                    Whole Genome Sequencing is the process of determining the nucleotide sequence of an organism's DNA and is
+                                    critical in the development of vaccines to combat virus outbreaks, including COVID-19.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- bottom right square -->
+
+                    <!-- <div class="item-hints">
+                        <div class="hint" data-position="4">
+                            <span class="hint-radius"></span>
+                            <span class="hint-dot"></span>
+                            <div id="hint-content" class="hint-content">
+                                Rosalind Franklin is best known for her contributions to the discovery of the molecular structure of
+                                deoxyribonucleic acid (DNA).
+                            </div>
+                        </div>
+                    </div> -->
+                    <img id="rosalind" src="./images/rosalind.gif" alt="Rosalind">
                 </div>
                 
-                <img id="desk" src="./images/desk.png" alt="Desk">
+                <!-- <img id="desk" src="./images/desk.png" alt="Desk"> -->
                 <!-- <img id="active-dna-poster" src="./images/dnaposter.gif"> -->
                 <!-- <img id="beaker" src="./images/beaker.gif"> -->
                 <!-- <img id="github" src="./images/github.png"> -->
             </div>
 
-            <div id="middle">
-                <!-- <button id="new-strand" class="button">
-                    <div class="button__horizontal"></div>
-                    <div class="button__vertical"></div>
-                </button> -->
-                <div id="new-strand"></div>
-                <br />
-                <div class="item-hints rosalind-hints">
-                    <div class="hint" data-position="4">
-                        <!-- hint content -->
-                        <span class="hint-radius"></span>
-                        <span class="hint-dot"></span>
-                        <div id="hint-content" class="hint-content">
-                            Rosalind Franklin is best known for her contributions to the discovery of the molecular structure of deoxyribonucleic acid (DNA).
-                        </div>
-                        <img id="rosalind" src="./images/rosalind.gif" alt="Rosalind">
-                    </div>
-                </div>
-            </div>
-                
             <div id="right">
-                <div id='root'></div>
+                <div id="new-strand"></div>
+
                 <div id="big">
                     <img id="stoplight" src="./images/stoplight.png" alt="">
                     <div id="intro"></div>
