@@ -250,35 +250,30 @@ body {
     opacity: 0;
 }
 
-/* #computer, #active-computer {
-    width: 12rem;
-    height: 10rem; */
-    /* position: absolute; */
-    /* bottom: 0rem;
-    top: -4rem;
-    left: 0rem; */
-/* } */
-
 #desksquare {
-  position: relative;
-    border: 3px solid greenyellow;
+  display: grid;
+  grid-template-columns: 1fr;  
+  /* border: 3px solid greenyellow; */
+}
 
+#desksquare > div {
+ grid-row-start: 1;
+ grid-column-start: 1;
+}
+
+.comp-hints {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 1;
+  /* border: 3px solid red; */
 }
 
 #desk {
     width: 20rem;
     height: 20rem;
     z-index: 2;
-    position: absolute;
-      border: 3px solid purple;
-
-}
-
-.comp-hints {
-  /* position: absolute; */
-  z-index: 1;
-  border: 3px solid red;
-  position: absolute;
+    /* border: 3px solid purple; */
 }
 
 #new-strand > button, #submit {
