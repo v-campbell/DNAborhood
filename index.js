@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     tryAgainButton.addEventListener('click', () => {
       game.runGame();
-    //   console.log('is the console running? WE GOTTA BE IN HERE')
-    //   tryAgainButton.innerHTML = "no worky"
+    //   console.log('is the console running?')
+    //   tryAgainButton.innerHTML = "not working"
     })
     newStrand.appendChild(tryAgainButton);
 

@@ -321,8 +321,16 @@ a {
   bottom: 0;
   right: 0;
   /* background: rgba(114, 128, 126, 0.116); */
-  padding: 1rem;
-  width: 6rem;
+  padding: 1rem 0 1rem 1rem;
+  width: 7.5rem;
+}
+
+.fa {
+
+}
+
+.fa:hover {
+  color: rgb(241, 239, 239);
 }
 
 /* ------------random styling------------- */

@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
   tryAgainButton.id = "tryAgainButton";
   tryAgainButton.innerHTML = "New Game";
   tryAgainButton.addEventListener('click', function () {
-    game.runGame(); //   console.log('is the console running? WE GOTTA BE IN HERE')
-    //   tryAgainButton.innerHTML = "no worky"
+    game.runGame(); //   console.log('is the console running?')
+    //   tryAgainButton.innerHTML = "not working"
   });
   newStrand.appendChild(tryAgainButton); // --------type intro--------
 
