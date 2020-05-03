@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
     tryAgainButton.addEventListener('click', () => {
       game.runGame();
-    //   console.log('is the console running?')
-    //   tryAgainButton.innerHTML = "not working"
     })
     newStrand.appendChild(tryAgainButton);
 
@@ -45,5 +43,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --------image functionality--------
 
-  
 }) 
+
