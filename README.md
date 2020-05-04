@@ -1,5 +1,6 @@
 # DNAborhood Read.ME
 Navigate around Dr. Rosalind Franklin's lab and help her sequence some genomes!
+[Live Game](https://v-campbell.github.io/DNAborhood/)
 ***
 
 ## Live
