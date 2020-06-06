@@ -106,8 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   tryAgainButton.id = "tryAgainButton";
   tryAgainButton.innerHTML = "New Game";
   tryAgainButton.addEventListener('click', function () {
-    game.runGame(); //   console.log('is the console running?')
-    //   tryAgainButton.innerHTML = "not working"
+    game.runGame();
   });
   newStrand.appendChild(tryAgainButton); // --------type intro--------
 
@@ -148,281 +147,98 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var STRANDLENGTH = 6;
+var NUMHIDDEN = 4;
+var nucleotides = "ATCG";
+
 var Board = /*#__PURE__*/function () {
   function Board() {
     _classCallCheck(this, Board);
 
-    this.topStrand = [];
-    this.bottomStrand = [];
     this.strands = [];
-    this.hiddenTopStrand = [];
-    this.hiddenBottomStrand = [];
     this.hiddenStrands = [];
-    this.strandLength = 6;
-    this.hidden = 4;
-    this.hiddenLetters = [];
-    this.possibles = [];
-    this.prepopulated = [];
-    this.numGuesses = 4;
-    this.match = true;
-    this.win = false;
-    this.tempPool = this.hiddenLetters;
-    this.gameOver = false;
+    this.poss = [];
+    this.setupStrands();
+    this.hideStrands();
   }
 
   _createClass(Board, [{
-    key: "runBoard",
-    value: function runBoard() {
-      this.numGuesses = 4;
-      this.setupStrands(6);
-      this.hideStrands();
-      this.createPossibles();
-    }
-  }, {
     key: "setupStrands",
     value: function setupStrands() {
-      var nucleotides = "ATCG"; //generate random topStrand
+      var topStrand = [];
+      var bottomStrand = [];
 
-      for (var i = 0; i < this.strandLength; i++) {
-        this.topStrand[i] = nucleotides[Math.floor(Math.random() * nucleotides.length)];
-      } //generate bottomStrand based on topStrand
-
-
-      for (var j = 0; j < this.strandLength; j++) {
-        if (this.topStrand[j] === "A") this.bottomStrand[j] = "T";
-        if (this.topStrand[j] === "T") this.bottomStrand[j] = "A";
-        if (this.topStrand[j] === "C") this.bottomStrand[j] = "G";
-        if (this.topStrand[j] === "G") this.bottomStrand[j] = "C";
+      for (var i = 0; i < STRANDLENGTH; i++) {
+        topStrand[i] = nucleotides[Math.floor(Math.random() * nucleotides.length)];
       }
 
-      this.strands = [this.topStrand, this.bottomStrand];
-    }
-  }, {
-    key: "hideRandomStrands",
-    value: function hideRandomStrands(strand) {
-      var randomNums = [];
-      var newStrand = strand.slice();
-      newStrand = newStrand.map(function (letter) {
-        return letter = letter + "X";
-      });
-
-      while (randomNums.length < this.hidden) {
-        var randomNum = Math.floor(Math.random() * this.strandLength);
-
-        if (randomNums.indexOf(randomNum) === -1) {
-          randomNums.push(randomNum);
-          this.hiddenLetters.push(newStrand[randomNum]);
-          newStrand[randomNum] = "-";
-        }
+      for (var j = 0; j < STRANDLENGTH; j++) {
+        if (topStrand[j] === "A") bottomStrand[j] = "T";
+        if (topStrand[j] === "T") bottomStrand[j] = "A";
+        if (topStrand[j] === "C") bottomStrand[j] = "G";
+        if (topStrand[j] === "G") bottomStrand[j] = "C";
       }
 
-      return newStrand;
+      this.strands = [topStrand, bottomStrand];
     }
   }, {
     key: "hideStrands",
     value: function hideStrands() {
-      this.hiddenTopStrand = this.hideRandomStrands(this.topStrand);
-      this.hiddenBottomStrand = this.hideRandomStrands(this.bottomStrand);
-      this.hiddenStrands = [this.hiddenTopStrand, this.hiddenBottomStrand];
-    }
-  }, {
-    key: "createPossibles",
-    value: function createPossibles() {
-      // shuffle the strands's characters to put into possibles array
-      for (var i = this.hiddenLetters.length - 1; i > 0; i -= 1) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var _ref = [this.hiddenLetters[j], this.hiddenLetters[i]];
-        this.hiddenLetters[i] = _ref[0];
-        this.hiddenLetters[j] = _ref[1];
-      }
-
-      return this.hiddenLetters;
-    }
-  }, {
-    key: "printBoard",
-    value: function printBoard() {
-      var guessesRemaining = document.getElementById("guesses");
-      var top = document.getElementById("top");
-      var bottom = document.getElementById("bottom");
-      var pool = document.getElementById("pool");
-      top.innerHTML = "";
-      bottom.innerHTML = "";
-      pool.innerHTML = "";
-
-      if (this.numGuesses === 4) {
-        guessesRemaining.innerHTML = this.numGuesses + " guesses left";
-      } else if (this.numGuesses === 3) {
-        guessesRemaining.innerHTML = "only " + this.numGuesses + " guesses left";
-      } else if (this.numGuesses === 2) {
-        guessesRemaining.innerHTML = "now only " + this.numGuesses + " guesses left";
-      } else if (this.numGuesses === 1) {
-        guessesRemaining.innerHTML = "last guess! make it count!";
-      }
-
-      var clicks = 0;
-      var topGuess = this.hiddenTopStrand;
-      var bottomGuess = this.hiddenBottomStrand;
-      this.hiddenTopStrand.map(function (letter, i) {
-        var div = document.createElement("div");
-        if (letter.length > 1) div.innerHTML = letter.charAt(0);
-        if (letter.length === 1) div.innerHTML = letter;
-        div.className = "letters";
-        div.id = "topletter" + i;
-        div.addEventListener("click", function () {
-          if (clicks === 0) {
-            div.className += " selected";
-            clicks += 1;
-          } else {
-            var selected = document.getElementsByClassName("selected").item(0);
-            selected.className = selected.className.replace(" selected", "");
-            var temp = div.innerHTML;
-            div.innerHTML = selected.innerHTML;
-            selected.innerHTML = temp;
-            clicks = 0;
-            topGuess[i] = div.innerHTML;
-          }
-        });
-        top.appendChild(div);
-      });
-      this.hiddenBottomStrand.map(function (letter, i) {
-        var div = document.createElement("div");
-        if (letter.length > 1) div.innerHTML = letter.charAt(0);
-        if (letter.length === 1) div.innerHTML = letter;
-        div.className = "letters";
-        div.id = "bottomletter" + i;
-        div.addEventListener("click", function () {
-          if (clicks === 0) {
-            div.className += " selected";
-            clicks += 1;
-          } else {
-            var selected = document.getElementsByClassName("selected").item(0);
-            selected.className = selected.className.replace(" selected", "");
-            var temp = div.innerHTML;
-            div.innerHTML = selected.innerHTML;
-            selected.innerHTML = temp;
-            clicks = 0;
-            topGuess[i] = div.innerHTML;
-          }
-        });
-        bottom.appendChild(div);
-      });
-      this.hiddenLetters.map(function (possible, i) {
-        var div = document.createElement("div");
-        div.innerHTML = possible.charAt(0);
-        div.className = "possibles";
-        div.id = "possible" + i;
-        div.addEventListener("click", function () {
-          if (clicks === 0) {
-            div.className += " selected";
-            clicks += 1;
-          } else if (div.className.includes("possibles")) {
-            var selected = document.getElementsByClassName("selected").item(0);
-            selected.className = selected.className.replace(" selected", "");
-            div.className += " selected";
-          }
-        });
-        possible = div.innerHTML;
-        pool.appendChild(div);
-      });
-      this.submit();
-    }
-  }, {
-    key: "submit",
-    value: function submit() {
       var _this = this;
 
-      var topGuess = this.hiddenTopStrand;
-      var bottomGuess = this.hiddenBottomStrand;
-      var submit = document.getElementById("submit");
-      submit.addEventListener("click", function () {
-        _this.receiveGuess([topGuess, bottomGuess]);
-      });
+      var helper = function helper(strand) {
+        var randomNums = [];
+        var newStrand = strand.slice();
+
+        while (randomNums.length < NUMHIDDEN) {
+          var randomNum = Math.floor(Math.random() * STRANDLENGTH);
+
+          if (randomNums.indexOf(randomNum) === -1) {
+            randomNums.push(randomNum);
+
+            _this.poss.push(newStrand[randomNum]);
+
+            newStrand[randomNum] = "-";
+          }
+        }
+
+        return newStrand;
+      };
+
+      this.hiddenStrands = [helper(this.strands[0]), helper(this.strands[1])];
+      this.shufflePoss();
+    }
+  }, {
+    key: "shufflePoss",
+    value: function shufflePoss() {
+      for (var i = this.poss.length - 1; i > 0; i -= 1) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var _ref = [this.poss[j], this.poss[i]];
+        this.poss[i] = _ref[0];
+        this.poss[j] = _ref[1];
+      }
     }
   }, {
     key: "receiveGuess",
     value: function receiveGuess(guess) {
-      this.match = true;
+      var win = true;
 
       for (var i = 0; i < 2; i++) {
-        for (var j = 0; j < this.strandLength; j++) {
-          // don't touch prepopulated values
-          if (guess[i][j].charAt(1) !== "X") {
-            // if incorrect (ie "A" !== "CX".charAt(0) or "-X")
-            if (this.strands[i][j] !== guess[i][j]) {
-              guess[i][j] = "-";
-              this.match = false;
+        for (var j = 0; j < STRANDLENGTH; j++) {
+          if (this.hiddenStrands[i][j] === '-') {
+            if (this.strands[i][j] === guess[i][j]) {
+              // this.poss[this.poss.indexOf(guess[i][j])] = "-";
+              this.poss.splice(this.poss.indexOf(guess[i][j]), 1);
             } else {
-              // if correct, remove the 1st instance of the correctly guessed nucleotide from possibles
-              if (guess[i][j] === this.strands[i][j]) {
-                var y = this.hiddenLetters.indexOf(guess[i][j] + "X");
-                this.tempPool[y] = "-";
-                guess[i][j] += "X";
-              }
+              guess[i][j] = "-";
+              win = false;
             }
-          } else {}
+          }
         }
       }
 
-      this.updateFrontendAfterGuess(guess);
-    }
-  }, {
-    key: "updateFrontendAfterGuess",
-    value: function updateFrontendAfterGuess(guess) {
-      if (this.match === true) {
-        this.win = true;
-        this.gameEnd();
-      } else {
-        this.numGuesses -= 1;
-
-        if (this.numGuesses === 0) {
-          // this.win = false;
-          this.gameEnd();
-        } else {
-          // re-show top
-          guess[0].map(function (letter, i) {
-            var topDiv = document.getElementById("topletter" + i);
-            topDiv.innerHTML = letter.charAt(0);
-
-            if (letter !== "-") {
-              topDiv.className = " green";
-            }
-          }); // re-show bottom
-
-          guess[1].map(function (letter, i) {
-            var bottomDiv = document.getElementById("bottomletter" + i);
-            bottomDiv.innerHTML = letter.charAt(0);
-
-            if (letter !== "-") {
-              bottomDiv.className = " green";
-            }
-          }); // re-show possibles
-
-          this.tempPool.map(function (letter, i) {
-            var possible = document.getElementById("possible" + i);
-            if (letter.length === 1) possible.innerHTML = letter;
-            if (letter.length > 1) possible.innerHTML = letter.charAt(0); // possible.innerHTML = letter.charAt(0);
-          });
-        }
-
-        ;
-      }
-
-      var guessesRemaining = document.getElementById("guesses");
-      if (this.numGuesses > 0) guessesRemaining.innerHTML = this.numGuesses + " guesses left";
-    }
-  }, {
-    key: "gameEnd",
-    value: function gameEnd() {
-      var gameOverDiv = document.getElementById("gameover");
-      gameOverDiv.className = "show-game-over";
-      var game = document.getElementById("game");
-      game.className = "hide-game";
-
-      if (this.win) {
-        gameOverDiv.innerHTML = "You did it! Click new game to play again! Or don't. I definitely get it.";
-      } else {
-        gameOverDiv.innerHTML = "Oh no, game over. Click new game to try again! Or don't. I get it.";
-      }
+      this.hiddenStrands = guess;
+      return win;
     }
   }]);
 
@@ -453,22 +269,129 @@ var Game = /*#__PURE__*/function () {
     _classCallCheck(this, Game);
 
     this.board = new Board();
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.gameOverDiv = document.getElementById("gameover");
+    this.game = document.getElementById("game");
   }
 
   _createClass(Game, [{
     key: "runGame",
     value: function runGame() {
       this.board = new Board();
-      this.match = true;
-      this.win = false;
-      this.tempPool = this.board.hiddenLetters;
       this.numGuesses = 4;
-      this.board.runBoard();
-      var gameOverDiv = document.getElementById("gameover");
-      gameOverDiv.className = "hide-game-over";
-      var game = document.getElementById("game");
-      game.className = "show-game";
-      this.board.printBoard();
+      this.win = false;
+      this.printBoard();
+      this.gameOverDiv.className = "hide-game-over";
+      this.game.className = "show-game";
+    }
+  }, {
+    key: "handleGuess",
+    value: function handleGuess(guess) {
+      this.win = this.board.receiveGuess(guess);
+      this.numGuesses--;
+      this.printBoard();
+      if (this.win || this.numGuesses < 1) this.gameEnd();
+    }
+  }, {
+    key: "printBoard",
+    value: function printBoard() {
+      var guessesRemaining = document.getElementById("guesses");
+      var top = document.getElementById("top");
+      var bottom = document.getElementById("bottom");
+      var pool = document.getElementById("pool");
+      top.innerHTML = "";
+      bottom.innerHTML = "";
+      pool.innerHTML = "";
+
+      if (this.numGuesses === 4) {
+        guessesRemaining.innerHTML = this.numGuesses + " guesses left";
+      } else if (this.numGuesses === 3) {
+        guessesRemaining.innerHTML = "only " + this.numGuesses + " guesses left";
+      } else if (this.numGuesses === 2) {
+        guessesRemaining.innerHTML = "now only " + this.numGuesses + " guesses left";
+      } else if (this.numGuesses === 1) {
+        guessesRemaining.innerHTML = "last guess! make it count!";
+      }
+
+      var clicks = 0;
+
+      var handleClick = function handleClick(div) {
+        if (clicks === 0) {
+          div.className += " selected";
+          clicks += 1;
+        } else {
+          var selected = document.getElementsByClassName("selected").item(0);
+          selected.className = selected.className.replace(" selected", "");
+          var temp = div.innerHTML;
+          div.innerHTML = selected.innerHTML;
+          selected.innerHTML = temp;
+          clicks = 0;
+        }
+      };
+
+      this.board.hiddenStrands[0].map(function (letter, i) {
+        var div = document.createElement("div");
+        div.innerHTML = letter;
+        div.className = "letters";
+        div.id = "topletter" + i;
+        if (letter === '-') div.addEventListener("click", function () {
+          return handleClick(div);
+        });
+        top.appendChild(div);
+      });
+      this.board.hiddenStrands[1].map(function (letter, i) {
+        var div = document.createElement("div");
+        div.innerHTML = letter;
+        div.className = "letters";
+        div.id = "bottomletter" + i;
+        if (letter === '-') div.addEventListener("click", function () {
+          return handleClick(div);
+        });
+        bottom.appendChild(div);
+      });
+      this.board.poss.map(function (possible, i) {
+        var div = document.createElement("div");
+        div.innerHTML = possible;
+        div.className = "possibles";
+        div.id = "possible" + i;
+        div.addEventListener("click", function () {
+          return handleClick(div);
+        });
+        possible = div.innerHTML;
+        pool.appendChild(div);
+      });
+      var submit = document.getElementById("submit");
+      submit.addEventListener("click", this.handleSubmit);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      var topGuess = [];
+      var bottomGuess = []; // change the hardcode value
+
+      for (var i = 0; i < 6; i++) {
+        var letter = document.getElementById('topletter' + i).innerHTML;
+        topGuess.push(letter);
+      }
+
+      for (var _i = 0; _i < 6; _i++) {
+        var _letter = document.getElementById('bottomletter' + _i).innerHTML;
+        bottomGuess.push(_letter);
+      }
+
+      this.handleGuess([topGuess, bottomGuess]);
+    }
+  }, {
+    key: "gameEnd",
+    value: function gameEnd() {
+      this.gameOverDiv.className = "show-game-over";
+      this.game.className = "hide-game";
+
+      if (this.win) {
+        this.gameOverDiv.innerHTML = "You did it! Click new game to play again! Or don't. I definitely get it.";
+      } else {
+        this.gameOverDiv.innerHTML = "Oh no, game over. Click new game to try again! Or don't. I get it.";
+      }
     }
   }]);
 
